@@ -1,0 +1,167 @@
+\documentclass[12pt,a4paper]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[portuguese]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\author{Mario Alexis Lamas Espinoza}
+\title{Conjectura de Lawson}
+
+\newtheorem{teorema}{Teorema}
+\newtheorem{proposicao}{Proposição}
+\theoremstyle{definition}
+\newtheorem{definicao}{Definição}
+\newtheorem{observacao}{Observação}
+
+
+\include{custom}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle	
+\end{frame}
+
+\section{Conjectura de Lawson}
+
+\begin{frame}
+	\frametitle{Toro de Clifford}
+	
+	\begin{definicao}
+		Seja $f: \R^2 \rightarrow S^3$ definida por
+		\begin{equation*}
+			f(u,v) = \frac{1}{\sqrt{2}} \left(\cos u, \sin u, \cos v, \sin v\right).
+		\end{equation*}
+		A imagem de $f$ é chamada de \emph{toro de Clifford}.
+	\end{definicao}
+
+	\begin{observacao}
+		A imagem de $f$ é um toro porque é congruente com $S^1 \left(\frac{1}{\sqrt{2}}\right) \times S^1 \left(\frac{1}{\sqrt{2}}\right)$.
+	\end{observacao}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conjectura de Lawson}
+	\begin{teorema}
+		Seja $F: \Sigma \rightarrow S^3$ um mergulho mínimo do toro em $S^3$. Então a imagem de $F$ é congruente ao toro de Clifford.
+	\end{teorema}
+\end{frame}
+
+\begin{frame}
+	\begin{definicao}
+		\begin{equation*}
+			\Psi(x) = \frac{\norm{A(x)}}{\sqrt{2}}
+		\end{equation*}
+	\end{definicao}
+\end{frame}
+
+\begin{frame}
+	\begin{proposicao}
+		Se
+		\begin{equation*}
+			\sup_{\substack{x,y \in \Sigma \\ x \neq y}} \frac{\norm{\innerproduct{\nu(x)}{F(y)}}}{\Psi(x) (1-\innerproduct{F(x)}{F(y)})} \leq 1,
+		\end{equation*}
+		então $F$ é congruente ao toro de Clifford.
+	\end{proposicao}
+\end{frame}
+
+\begin{frame}
+	\begin{equation*}
+		\Psi(x) (1-\innerproduct{F(x)}{F(y)}) + \innerproduct{\nu(x)}{F(y)} \geq 0.
+	\end{equation*}
+	Identificando $F(x)$ com $x$.
+	Seja $\{ e_1,e_2 \}$ uma base ortonormal de $T_x \Sigma$ tal que
+	\begin{equation*}
+		h(e_1,e_1)=\Psi(x), \quad h(e_1,e_2)=0 \quad e \quad h(e_2.e_2)=-\Psi(x)
+	\end{equation*}
+	Seja $\gamma$ uma geodésica tal que $\gamma(0)=x$ e $\gamma'(0)=e_1$.
+	\begin{equation*}
+		f(t) = \Psi(x) (1-\innerproduct{x}{\gamma(t)}) + \innerproduct{\nu(x)}{\gamma(t)} \geq 0.
+	\end{equation*}
+	
+\end{frame}
+
+\begin{frame}
+	\begin{align*}
+	f'(t) =& -\innerproduct{\Psi(x)x - \nu(x)}{\gamma'(t)},\\
+	f''(t) =& \innerproduct{\Psi(x)x - \nu(x)}{\gamma(t)}\\
+	& + h(\gamma'(t),\gamma'(t)) \innerproduct{\Psi(x)x - \nu(x)}{\nu(\gamma(t))},\\
+	f'''(t) =& \innerproduct{\Psi(x)x - \nu(x)}{\gamma'(t)}\\
+	& + h(\gamma'(t),\gamma'(t)) \innerproduct{\Psi(x)x - \nu(x)}{D_{\gamma'(t)} \nu(\gamma(t))}\\
+	& + (D_{\gamma'(t)} h) (\gamma'(t),\gamma'(t)) \innerproduct{\Psi(x)x - \nu(x)}{\nu(\gamma'(t))}.
+	\end{align*}
+	$f(0)=f'(0)=f''(0)=0$.
+	$f'''(0)=0$.
+	$(D_{e_1}h)(e_1.e_1)=0$.
+	$(D_{e_2}h)(e_2,e_2)=0$.
+	$\nabla h \equiv 0$.
+	$h$ é constante.
+\end{frame}
+
+\begin{frame}
+	\begin{teorema}
+		Se $M^2$ é uma superfície mínima em $S^3$ de curvatura de Gauss constante $K$, então $K=1$ e $M^2$ é totalmente geodésica, ou $K=0$ e $M^2$ é um pedaço aberto do toro de Clifford.
+	\end{teorema}
+\end{frame}
+
+\begin{frame}
+	\begin{definicao}
+		\begin{equation*}
+			\aleph = \sup_{\substack{x,y \in \Sigma \\ x \neq y}} \frac{\norm{\innerproduct{\nu(x)}{F(y)}}}{\Psi(x) (1-\innerproduct{F(x)}{F(y)})}
+		\end{equation*}
+	\end{definicao}
+\end{frame}
+
+\begin{frame}
+	\begin{definicao}
+		\begin{equation*}
+			Z(x,y) = \aleph \Psi(x) \left(1 - \innerproduct{F(x)}{F(y)} \right) + \innerproduct{\nu(x)}{F(y)}
+		\end{equation*}
+	\end{definicao}
+\end{frame}
+
+\begin{frame}
+	\begin{definicao}
+		\begin{equation*}
+		\Omega = \left\{ x \in \Sigma: \exists y \in \Sigma \setminus \{ x \}, Z(x,y)=0 \right\}
+		\end{equation*}
+	\end{definicao}
+\end{frame}
+
+\begin{frame}
+	\begin{proposicao}
+		$\Omega$ não é vazio.
+	\end{proposicao}
+\end{frame}
+
+\begin{frame}
+	\begin{proposicao}
+		\begin{multline*}
+			\sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i^2}(x,y) + 2 \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i \partial y_i}(x,y) + \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial y_i^2}(x,y) \leq \\
+			- \frac{\aleph^2 -1}{\aleph} \frac{\Psi(x)}{1 - \innerproduct{F(x)}{F(y)}} \sum_{i=1}^{2} \innerproduct{\frac{\partial F}{\partial x_i}(x)}{F(y)}^2 \\ 
+			+ \overline{\Lambda}(x,y) \left( Z(x,y) + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial x_i}(x,y) \right| + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial y_i}(x,y) \right| \right)
+		\end{multline*}
+	\end{proposicao}
+\end{frame}
+
+\begin{frame}
+	\begin{teorema}
+		\begin{equation*}
+			\sum_{j=1}^{m} D^2 \varphi (X_j,X_j) = -L \inf_{|\xi| \leq 1} D^2 (\xi,\xi) + L \varphi + L |D \varphi|
+		\end{equation*}
+	\end{teorema}
+\end{frame}
+
+\begin{frame}
+	\begin{proposicao}
+		$\Omega$ é aberto.
+	\end{proposicao}
+\end{frame}
+
+
+\end{document}
