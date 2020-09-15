@@ -11,6 +11,8 @@
 \usepackage[alf]{abntex2cite}
 \usepackage{parskip}
 
+\usetheme{Madrid}
+
 \author{Mario Alexis Lamas Espinoza}
 \title{Conjectura de Lawson}
 \setbeamertemplate{theorems}[numbered]
@@ -142,7 +144,7 @@
 		
 		\item Como $f(t) \geq 0$, então $f'''(0)=0$.
 		
-		\item Portanto, $(D_{e_1}h)(e_1.e_1)=0$.
+		\item Portanto, $(D_{e_1}h)(e_1,e_1)=0$.
 		
 		\item Mudando a orientação à base $\{ e_2, e_1, -\nu \}$, e procedendo de maneira similar, temos que $\parentheses{D_{e_2}h} \parentheses{e_2,e_2}=0$.
 		
@@ -169,7 +171,7 @@
 		\item Se $K=1$, então $F$ tem pontos umbílicos. 
 		Isso é uma contradição.
 		
-		\item Portanto a curvatura Gaussiana $K \equiv 0$ e $F$ é um pedaço do toro de Clifford.
+		\item Portanto a curvatura Gaussiana $K \equiv 0$ e $F$ é um pedaço aberto do toro de Clifford.
 		Como $F$ é compacta, então $F$ é o toro de Clifford.
 		\qed
 	\end{itemize}
@@ -188,38 +190,46 @@
 \end{frame}
 
 \begin{frame}
-	\begin{observacao}
+
 		A partir de agora vamos analisar o caso onde $\aleph > 1$.
-	\end{observacao}
+	
 	
 	Da definição de $\aleph$, podemos ter a função $Z: \Sigma \times \Sigma \rightarrow \R$ descrita da forma:
 	\begin{equation*}
 		Z(x,y) = \aleph \Psi(x) \left(1 - \innerproduct{F(x)}{F(y)} \right) + \innerproduct{\nu(x)}{F(y)}.
 	\end{equation*}
 	
-	Definamos também o conjunto
-	\begin{equation*}
-	\Omega = \left\{ x \in \Sigma: \exists y \in \Sigma \setminus \{ x \}, Z(x,y)=0 \right\}.
-	\end{equation*}
+	A derivada de $Z$ com respeito a $x_i$ está dado por
+	\begin{multline*}
+		\partialdiff{Z}{x_i}(x,y) = \aleph \partialdiff{\Psi}{x_i}(x) \parentheses{1 - \innerproduct{F(x)}{F(y)}} \\
+		-\aleph \Psi(x) \innerproduct{\partialdiff{F}{x_i}(x)}{F(y)} + \sum_{k=1}^{2} h_{ik}(x) \innerproduct{\partialdiff{F}{x_k}(x)}{F(y)}.
+	\end{multline*}
+	
+
 \end{frame}
 
 
 
 \begin{frame}
+		Definamos também o conjunto
+	\begin{equation*}
+	\Omega = \left\{ x \in \Sigma: \exists y \in \Sigma \setminus \{ x \}, Z(x,y)=0 \right\}.
+	\end{equation*}
+	
 	\begin{proposicao}
 		$\Omega$ não é vazio.
 	\end{proposicao}
 \end{frame}
 
 \begin{frame}
-	\begin{proposicao}
+	\begin{proposicao}\label{sum-2nd-derivative-z-inequality}
 		A função $Z$ cumpre a seguinte desigualdade:
 		\begin{multline*}
 			\sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i^2}(x,y) + 2 \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i \partial y_i}(x,y) + \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial y_i^2}(x,y) \leq \\
 			- \frac{\aleph^2 -1}{\aleph} \frac{\Psi(x)}{1 - \innerproduct{F(x)}{F(y)}} \sum_{i=1}^{2} \innerproduct{\frac{\partial F}{\partial x_i}(x)}{F(y)}^2 \\ 
 			+ \overline{\Lambda}(x,y) \left( Z(x,y) + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial x_i}(x,y) \right| + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial y_i}(x,y) \right| \right),
 		\end{multline*}
-		onde $\overline{\Lambda}(x,y)$ pode não ser limitada em uma vizinhança da diagonal.
+		onde $\overline{\Lambda}(x,y)$ é contínua e pode não ser limitada em uma vizinhança da diagonal.
 	\end{proposicao}
 \end{frame}
 
@@ -228,7 +238,7 @@
 		\label{bony's-strict-maximum-principe}
 		Seja $\Omega$ um subconjunto aberto de $\R^n$, e sejam $X_1, \ldots, X_m$ campos vetoriais diferenciais em $\Omega$. Assuma que $\varphi: \Omega \rightarrow \R$ é uma função diferenciável não negativa satisfazendo
 		\begin{equation*}
-			\sum_{j=1}^{m} D^2 \varphi (X_j,X_j) = -L \inf_{|\xi| \leq 1} D^2 \varphi(\xi,\xi) + L \varphi + L |D \varphi|,
+			\sum_{j=1}^{m} D^2 \varphi (X_j,X_j) \leq -L \inf_{|\xi| \leq 1} D^2 \varphi(\xi,\xi) + L \varphi + L |D \varphi|,
 		\end{equation*}
 		onde $L$ é uma constante positiva. Seja $F= \{ x \in \Omega: \varphi(x)=0 \}$ o conjunto de zeros da função $\varphi$. Adicionalmente, suponha que $\gamma: [0,1] \rightarrow \Omega$ é um caminho diferenciável tal que $\gamma(0) \in F$ e $\gamma'(s) = \sum_{j=1}^{m} f_j(s) X_j(\gamma(s))$ para funções diferenciáveis $f_1, \ldots, f_m: [0,1] \rightarrow \R$. Então $\gamma(s) \in F$ para tudo $s \in [0,1]$.
 	\end{teorema}
@@ -244,8 +254,67 @@
 	\end{proposicao}
 \end{frame}
 
+\begin{frame}
+	Em $\Omega$ temos que
+	\begin{equation*}
+		Z(x,y) + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial x_i}(x,y) \right| + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial y_i}(x,y) \right| = 0
+	\end{equation*}
+	e
+	\begin{align*}
+		0 \leq \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i^2}(x,y) + 2 \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i \partial y_i}(x,y) + \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial y_i^2}(x,y) \leq \\
+		- \frac{\aleph^2 -1}{\aleph} \frac{\Psi(x)}{1 - \innerproduct{F(x)}{F(y)}} \sum_{i=1}^{2} \innerproduct{\frac{\partial F}{\partial x_i}(x)}{F(y)}^2 \leq 0
+	\end{align*}
+\end{frame}
 
+\begin{frame}
+	Portanto, 
+	\begin{equation*}
+		\innerproduct{\frac{\partial F}{\partial x_i}(x)}{F(y)} = 0,
+	\end{equation*}
+	para $i \in \{1;2\}$.
+	
+	Usando a igualdade anterior e sabendo que $\partialdiff{Z}{x_i}(x,y)=0$ em $\Omega$, $\partialdiff{Z}{x_i}(x,y)$ fica expressado por
+	\begin{equation*}
+		0 = \partialdiff{Z}{x_i}(x,y) = \aleph \partialdiff{\Psi}{x_i}(x) \parentheses{1 - \innerproduct{F(x)}{F(y)}}.
+	\end{equation*}
+\end{frame}
 
+\begin{frame}
+	Do anterior, conclui-se que
+	\begin{equation*}
+		\nabla \Psi(x) = 0, \quad \forall x \in \Omega.
+	\end{equation*}
+	
+	Em particular,
+	\begin{equation*}
+		\Delta_{\Sigma} \Psi(x) = 0.
+	\end{equation*}
+\end{frame}
+
+\begin{frame}
+	\begin{proposicao}
+		Seja $F: \Sigma \rightarrow S^3$ um toro mínimo mergulhado em $S^3$. Então a função $\Psi$ é estritamente positiva e satisfaz a EDP
+		\begin{equation*}
+			\Delta_{\Sigma} \Psi - \frac{\norm{\nabla \Psi}^2}{\Psi} + \parentheses{\norm{A}^2 - 2} \Psi = 0.
+		\end{equation*}
+	\end{proposicao}
+\end{frame}
+
+\begin{frame}
+	Da Proposição anterior,
+	\[ \Psi(x) = 1, \quad \forall x \in \Omega. \]
+	
+	Usando o teorema de extensão única para soluções de EDP elípticas (cf. \cite{Aronszajn1957}), concluímos que
+	\[ \Psi(x) = 1, \quad \forall x \in \Sigma. \]
+	
+	Conclui-se que
+	\[ \lambda_1 = 1 \quad \text{e} \quad \lambda_2 = -1, \]
+	onde $\lambda_1,\lambda_2$ são as curvaturas principais da superfície.
+\end{frame}
+
+\begin{frame}
+	Portanto, a curvatura Gaussiana $K \equiv 0$ em $\Sigma$. Pelo Teorema \ref{curv-gauss-de-sup-min-em-S3}, $F$ é o toro de Clifford.
+\end{frame}
 
 \begin{frame}
 	\frametitle{Referências}
