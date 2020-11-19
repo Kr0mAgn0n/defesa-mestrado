@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{beamer}
+\documentclass[10pt,a4paper]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -14,9 +14,12 @@
 
 \usetheme{Madrid}
 
-\author{Mario Alexis Lamas Espinoza \\ Orientador: Prof. Dr. Fernando Manfio}
+%\author{Mario Alexis Lamas Espinoza \\ Orientador: Prof. Dr. Fernando Manfio}
+\author[Mario Lamas, Orientador: Dr. F. Manfio]{Mario Alexis Lamas Espinoza \\ Orientador: Prof. Dr. Fernando Manfio}
 \title{Superfícies Mínimas e a Conjectura de Lawson}
 \institute[ICMC]{Instituto de Ciências Matemáticas e de Computação}
+\date{20 de novembro do 2020}
+
 \setbeamertemplate{theorems}[numbered]
 
 \newtheorem{teorema}{Teorema}
@@ -51,19 +54,34 @@
 %			\item Exemplos de superfícies mínimas em $\R^3$ (e.g. catenoide, heliciode) $\Sp^3$ (e.g. equador, toro de Clifford).
 %			\item Superfícies mínimas mergulhadas em $\Sp^3$.
 %		\end{itemize}
-		\item Apresentar a prova da conjectura de Lawson feita por Simon Brendle.
+		\item Apresentar a prova da conjectura de Lawson obtida por Simon Brendle.
 	\end{itemize}
 
 	\pause
 	\vspace{1cm}
 
-	\begin{conjectura}
+	\begin{conjectura}[Brendle, 2013]
 		Seja $F: \Sigma \rightarrow \Sp^3$ um mergulho mínimo do toro em $\Sp^3$. Então a imagem de $F$ é congruente ao toro de Clifford.
 	\end{conjectura}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Superfícies Mínimas em $\R^3$}
+	
+	\begin{definicao}
+		Uma superfície regular $M$ em $\R^3$ é dita ser uma  \alert{superfície mínima} se sua curvatura
+		média $H$ é nula em todos os pontos.
+	\end{definicao}
+
+	\pause
+	
+	\begin{itemize}
+		\item Por quê as superfícies com curvatura média nula são chamadas de superfícies mínimas?
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
 	
 	\begin{definicao}
 		Uma \alert{variação normal} da superfície regular $M$ dada por $f$ é uma família de superfícies $M_t$, com $t \in (-\epsilon,\epsilon)$, dadas por
@@ -82,7 +100,7 @@
 \end{frame}
 
 \begin{frame}
-	
+		
 	\begin{itemize}
 		\item Dados uma variação normal $M_t$ de $M$, relativa a uma função diferenciável $f: M \rightarrow \R$, com $t \in (-\epsilon,\epsilon)$, e um domínio limitado $D \subset M$, considere o conjunto
 		\begin{equation*}
@@ -117,9 +135,9 @@
 
 	\begin{teorema}
 		Nas condições acima, vale
-		\begin{equation}\label{primeira-variacao-da-area}
+		\begin{equation*}\label{primeira-variacao-da-area}
 		A'(0) = -2 \int_D H f\ dA,
-		\end{equation}
+		\end{equation*}
 		onde $dA$ denota o elemento de área de $M$.
 	\end{teorema}
 
@@ -127,15 +145,15 @@
 
 	\begin{proposicao}
 		\label{superficie-minima-como-ponto-critico-do-funcional-da-area}
-		Uma superfície $M$ em $\R^3$ é \alert{mínima} se, e somente se, $A'(0)=0$.
+		Uma superfície $M$ em $\R^3$ é \alert{mínima} se, e somente se, $A'(0)=0$ para qualquer variação normal de $M$.
 	\end{proposicao}
 
 	\pause
 	
-	\begin{definicao}
-		Uma superfície regular $M$ em $\R^3$ é dita ser uma  \alert{superfície mínima} se sua curvatura
-		média $H$ é nula em todos os pontos.
-	\end{definicao}
+	\begin{itemize}
+		\item Conhecendo isto, vamos falar do problema de Lagrange.
+	\end{itemize}
+	
 
 	
 \end{frame}
@@ -152,10 +170,16 @@
 	Sejam:
 	\begin{itemize}
 		\item $M$ uma solução para o problema de Lagrange.
+		
 		\pause
-		\item $M_t$ uma variação normal de $M$, onde $t \in \parentheses{-\epsilon,\epsilon}$.
-		\pause
+		
 		\item $f: M \rightarrow \R$ uma função diferenciável com $f \vert_{\partial M} \equiv 0$.
+		
+		\pause
+		
+		\item $M_t$ uma variação normal de $M$ dado por $f$, onde $t \in \parentheses{-\epsilon,\epsilon}$.
+		
+		
 	\end{itemize}
 
 	
@@ -171,14 +195,15 @@
 \begin{frame}
 	Logo:
 	\begin{itemize}
-		\item Como a área de $M$ é mínima, então
+		\item Como $M$ tem a menor área, então
 		\begin{equation*}
 		A(t) \geq A(0), \quad \forall t \in \parentheses{-\epsilon,\epsilon}.
 		\end{equation*}
 		\pause
 		\item Portanto, $A'(0) = 0$.
 		\pause
-		\item Pela Proposição \ref{superficie-minima-como-ponto-critico-do-funcional-da-area}, as superfícies de área mínima são superfícies mínimas.
+		\item Pela Proposição \ref{superficie-minima-como-ponto-critico-do-funcional-da-area}, \alert{as superfícies de área mínima são superfícies mínimas}.
+%		\item Pela Proposição \ref{superficie-minima-como-ponto-critico-do-funcional-da-area}, $M$ é uma superfície mínima.
 		\pause
 		\item A recíproca é falsa.
 	\end{itemize}
@@ -188,7 +213,8 @@
 	\frametitle{Propriedades das superfícies mínimas em $\R^3$}
 	
 	\begin{definicao}
-		Dada uma superfície regular $M$ em $\R^3$, uma \alert{carta local isoterma} $(U, \varphi)$ de $M$ é carta local que satisfaz
+%		Dada uma superfície regular $M$ em $\R^3$, 
+		Uma \alert{carta local isoterma} $(U, \varphi)$ de $M$ é uma carta local que satisfaz
 		\begin{equation*}
 		E = G = \lambda^2 \quad \text{e} \quad F=0,
 		\end{equation*}
@@ -215,6 +241,12 @@
 		\Delta \varphi \equiv 0.
 		\end{equation*}
 	\end{definicao}
+
+	\pause
+	
+	\begin{itemize}
+		\item Definidos os conceitos, temos o seguinte resultado.
+	\end{itemize}
 
 	\pause
 	
@@ -321,7 +353,10 @@
 		\pause
 		\item A energia potencial é proporcional a sua área superficial. (Gauss).
 		\pause
-		\item Pelo principio de Johann Bernoulli de trabalho virtual, as bolhas de sabão em estado de equilíbrio corresponde a superfícies de área mínima.
+		\item Uma baixa energia potencial representa um estado estável.
+		\pause 
+%		\item Pelo principio de Johann Bernoulli de trabalho virtual, 
+		\item As bolhas de sabão em estado de equilíbrio corresponde a superfícies de área mínima. (Johann Bernoulli)
 	\end{itemize}
 	
 %	Os objetos matemáticos que modelam os películas de sabão são as superfícies em $\R^3$. Para cada superfície, a teoria fenomenológica da capilaridade, devida a Gauss, afirma que a energia potencial é proporcional a sua área superficial. Assim, pelo principio de Johann Bernoulli de trabalho virtual, os filmes de sabão em estado de equilíbrio corresponde a superfícies de área mínima. \cite{Dierkes2010}.
@@ -343,7 +378,7 @@
 	\frametitle{Imersões isométricas}
 	
 	\begin{definicao}
-		Dados duas variedades Riemannianas $M^m$ e $\tilde{M}^n$, uma \alert{imersão isométrica} entre $M$ e
+		Dados duas variedades Riemannianas $M^m$ e $\tilde{M}^n$ ($m < n$), uma \alert{imersão isométrica} entre $M$ e
 		$\tilde{M}$ é uma aplicação diferenciável $f : M \rightarrow \tilde{M}$ que é uma imersão e, para todo $p \in M$, satisfaz
 		\begin{equation*}
 			\innerproduct{X}{Y} = \innerproduct{df(p) X}{df(p) Y},
@@ -465,21 +500,30 @@
 \begin{frame}
 
 	\begin{definicao}
-		O \alert{vetor curvatura média} de $f$ no ponto $p \in M$ é o vetor normal
+		O \alert{vetor curvatura média} de $f$ no ponto $p \in M^m$ é o vetor normal
 		\begin{equation}\label{vetor-curvatura-media}
 		H(p) = \frac{1}{m} \sum_{i=1}^m \alpha_f(X_i,X_i),
 		\end{equation}
-		onde $\{X_1, \ldots, X_m \}$ é uma base ortonormal de $T_p M$. Segue de \eqref{vetor-curvatura-media} que
+		onde $\{X_1, \ldots, X_m \}$ é uma base ortonormal de $T_p M$. 
+		Seja $\xi \in \{ X_{m+1}, \ldots, X_n \}$ onde
+		$\{ X_1, \ldots, X_m, X_{m+1}, \ldots, X_n \}$ uma base ortonormal de $T_p \tilde{M}$.
+		Segue de \eqref{vetor-curvatura-media} que
 		\begin{align*}
-		m \innerproduct{H}{\xi} &= \sum_{i=1}^m \innerproduct{\alpha_f(X_i,X_i)}{\xi} = \sum_{i=1}^m \innerproduct{A_{\xi} X_i}{X_i}\\
-		&= \tr A_{\xi},
+		\innerproduct{H}{\xi} &= \frac{1}{m} \sum_{i=1}^m \innerproduct{\alpha_f(X_i,X_i)}{\xi} = \frac{1}{m} \sum_{i=1}^m \innerproduct{A_{\xi} X_i}{X_i} = \frac{1}{m} \tr A_{\xi},
 		\end{align*}
-		logo o lado direito de \eqref{vetor-curvatura-media} não depende da escolha da base ortonormal.
+		onde $A_{\xi}$ é o \alert{operador de forma} com respeito a $\xi$ tal que $AX = -\tilde{\nabla}_X \xi$.
+
 	\end{definicao}
 
 \end{frame}
 
 \begin{frame}
+	
+	\begin{observacao}
+		O lado direito de \eqref{vetor-curvatura-media} não depende da escolha da base ortonormal.
+	\end{observacao}
+	
+	\pause
 
 	\begin{definicao}
 		Uma imersão isométrica $f: M \rightarrow \tilde{M}$ é dita ser \alert{mínima} no ponto $p \in M$ se $H(p)=0$. Diremos que $f$ é \alert{mínima} se for mínima em todos os pontos $p \in M$.
@@ -570,10 +614,10 @@
 		
 		\pause
 		
-		\item Fixemos o referencial ortogonal:
+		\item Fixemos o referencial ortonormal:
 		\begin{align*}
-		e_1 &= \frac{\partial x}{\partial u},\\
-		e_2 &= \frac{\partial x}{\partial v},\\
+		e_1 &= \parentheses{-\sin u, \cos u, 0, 0},\\
+		e_2 &= \parentheses{0,0, -\sin v, \cos v},\\
 		e_3 &= \frac{1}{\sqrt{2}} \parentheses{\cos u, \sin u, \cos v, \sin v},\\
 		e_4 &= \frac{1}{\sqrt{2}} \parentheses{-\cos u, -\sin u, \cos v, \sin v}.
 		\end{align*}
@@ -628,8 +672,8 @@
 		
 		\item Temos:
 		\begin{align*}
-		A e_1 &= -\tilde{\nabla}_{\frac{\partial}{\partial u}} e_4 = \frac{1}{\sqrt{2}} \parentheses{-\sin u, \cos u, 0, 0},\\
-		A e_2 &= -\tilde{\nabla}_{\frac{\partial}{\partial v}} e_4 = \frac{1}{\sqrt{2}} \parentheses{0,0, \sin v, -\cos v}.
+		A e_1 &= -\tilde{\nabla}_{e_1} e_4 = -\tilde{\nabla}_{\sqrt{2} \frac{\partial}{\partial u}} e_4 = \parentheses{-\sin u, \cos u, 0, 0},\\
+		A e_2 &= -\tilde{\nabla}_{e_2} e_4 = -\tilde{\nabla}_{\sqrt{2} \frac{\partial}{\partial v}} e_4 = \parentheses{0,0, \sin v, -\cos v}.
 		\end{align*}
 		
 		\pause
@@ -716,7 +760,7 @@
 
 	\pause
 
-	\begin{proposicao}[\cite{Brendle2013}]
+	\begin{proposicao}%[\cite{Brendle2013}]
 		\label{sup-min-nao-tem-pontos-umbilicos}
 		Uma superfície mínima imersa em $\Sp^3$ de genus 1 não tem pontos umbílicos, i.e., a segunda forma fundamental não é zero em tudo ponto da superfície.
 	\end{proposicao}
@@ -741,9 +785,9 @@
 
 	\pause
 
-	\begin{definicao}
-		Uma imersão $f: M \rightarrow \overline{M}$ é \alert{geodésica} em $p \in M$ se para todo $\eta \in \parentheses{T_p M}^\perp$ a segunda forma fundamental $A_\eta$ é identicamente nula em $p$. A imersão é \alert{totalmente geodésica} se ela é geodésica para todo $p \in M$.
-	\end{definicao}
+%	\begin{definicao}
+%		Uma imersão $f: M \rightarrow \overline{M}$ é \alert{geodésica} em $p \in M$ se para todo $\eta \in \parentheses{T_p M}^\perp$ a segunda forma fundamental $A_\eta$ é identicamente nula em $p$. A imersão é \alert{totalmente geodésica} se ela é geodésica para todo $p \in M$.
+%	\end{definicao}
 
 \end{frame}
 
@@ -751,12 +795,13 @@
 
 	\begin{teorema}[\cite{Lawson1969}]
 		\label{curv-gauss-de-sup-min-em-S3}
-		Se $M^2$ é uma superfície mínima em $\Sp^3$ de curvatura Gaussiana constante $K$, então $K=1$ e $M^2$ é totalmente geodésica, ou $K=0$ e $M^2$ é um pedaço aberto do toro de Clifford.
+		Se $M^2$ é uma superfície mínima em $\Sp^3$ de curvatura Gaussiana constante $K$, então $K=1$ e $M^2$ é totalmente geodésica, ou $K=0$ e $M^2$ é um subconjunto aberto do toro de Clifford.
 	\end{teorema}
 
 	\pause
 
 	\begin{proposicao}\label{aleph-leq-1}
+		Seja $\nu$ um campo de vetores unitários normais a $F$.
 		Se
 		\begin{equation*}
 		\sup_{\substack{x,y \in \Sigma \\ x \neq y}} \frac{\norm{\innerproduct{\nu(x)}{F(y)}}}{\Psi(x) (1-\innerproduct{F(x)}{F(y)})} \leq 1,
@@ -851,7 +896,7 @@
 		
 		\pause
 		
-		\item Portanto a curvatura Gaussiana $K \equiv 0$ e $F$ é um pedaço aberto do toro de Clifford.
+		\item Portanto a curvatura Gaussiana $K \equiv 0$ e $F$ é um subconjunto aberto do toro de Clifford.
 		Como $F$ é compacta, então $F$ é o toro de Clifford.
 		\qed
 	\end{itemize}
@@ -880,7 +925,7 @@
 		
 		\pause
 		
-		\item 	Da definição de $\aleph$, podemos ter a função $Z: \Sigma \times \Sigma \rightarrow \R$ descrita da forma:
+		\item 	Da definição de $\aleph$, podemos definir a função $Z: \Sigma \times \Sigma \rightarrow \R$ descrita da forma:
 		\begin{equation*}
 		Z(x,y) = \aleph \Psi(x) \left(1 - \innerproduct{F(x)}{F(y)} \right) + \innerproduct{\nu(x)}{F(y)}.
 		\end{equation*}
@@ -944,16 +989,22 @@
 		onde $L$ é uma constante positiva. Seja $F= \{ x \in W: \varphi(x)=0 \}$ o conjunto de zeros da função $\varphi$. Adicionalmente, suponha que $\gamma: [0,1] \rightarrow W$ é um caminho diferenciável tal que $\gamma(0) \in F$ e $\gamma'(s) = \sum_{j=1}^{m} f_j(s) X_j(\gamma(s))$ para funções diferenciáveis $f_1, \ldots, f_m: [0,1] \rightarrow \R$. Então $\gamma(s) \in F$ para tudo $s \in [0,1]$.
 	\end{teorema}
 
-\end{frame}
-
-\begin{frame}
-
+	\pause
 
 	\begin{observacao}
 		O Teorema \ref{bony's-strict-maximum-principe} é válido ainda quando $W$ é um aberto de uma variedade Riemanniana. 
 	\end{observacao}
 
-	\pause
+\end{frame}
+
+\begin{frame}
+
+
+%	\begin{observacao}
+%		O Teorema \ref{bony's-strict-maximum-principe} é válido ainda quando $W$ é um aberto de uma variedade Riemanniana. 
+%	\end{observacao}
+%
+%	\pause
 
 	\begin{itemize}
 		\item Definamos o conjunto
@@ -1035,14 +1086,14 @@
 \begin{frame}
 
 	\begin{itemize}
-		\item Em $\Omega$ temos que
+		\item Para cada $x \in \Omega$ existe $y \in \Sigma \setminus \{x\}$ tal que
 		\begin{equation*}
 		Z(x,y) + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial x_i}(x,y) \right| + \sum_{i=1}^{2} \left| \frac{\partial Z}{\partial y_i}(x,y) \right| = 0
 		\end{equation*}
 		
 		\pause
 		
-		\item Logo, em $\Omega$, a Proposição \ref{sum-2nd-derivative-z-inequality} fica expressada
+		\item Logo, a Proposição \ref{sum-2nd-derivative-z-inequality} fica expressada
 		\begin{align*}
 		0 \leq \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i^2}(x,y) + 2 \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial x_i \partial y_i}(x,y) + \sum_{i=1}^{2} \frac{\partial^2 Z}{\partial y_i^2}(x,y) \leq \\
 		- \frac{\aleph^2 -1}{\aleph} \frac{\Psi(x)}{1 - \innerproduct{F(x)}{F(y)}} \sum_{i=1}^{2} \innerproduct{\frac{\partial F}{\partial x_i}(x)}{F(y)}^2 \leq 0,
@@ -1066,7 +1117,7 @@
 		
 		\pause
 		
-		\item Usando a igualdade anterior e, sabendo que $\partialdiff{Z}{x_i}(x,y)=0$ em $\Omega$, $\partialdiff{Z}{x_i}(x,y)$ fica expressado por
+		\item Usando a igualdade anterior e, sabendo que $\partialdiff{Z}{x_i}(x,y)=0$, $\partialdiff{Z}{x_i}(x,y)$ fica expressado por
 		\begin{equation*}
 		0 = \partialdiff{Z}{x_i}(x,y) = \aleph \partialdiff{\Psi}{x_i}(x) \parentheses{1 - \innerproduct{F(x)}{F(y)}}.
 		\end{equation*}
@@ -1132,15 +1183,18 @@
 
 \end{frame}
 
-\begin{frame}
-	\begin{center}
-		\huge Obrigado pela atenção.
-	\end{center}
-\end{frame}
+
 
 \begin{frame}[allowframebreaks]
 	\frametitle{Referências}
 	\bibliography{references}
+\end{frame}
+
+
+\begin{frame}
+	\begin{center}
+		\huge Obrigado pela atenção.
+	\end{center}
 \end{frame}
 
 \end{document}
